@@ -1,0 +1,51 @@
+import src.pepe.*
+import src.resultados.*
+import src.presentismos.*
+import src.categorias.*
+
+describe 'Sueldo de Pepe' {
+
+    method pepeCon(categoria, resultado, presentismo, antiguedad, faltas) {
+        pepe.cantidadFaltas(faltas)
+        pepe.aniosAntiguedad(antiguedad)
+        pepe.categoria(categoria)
+        pepe.bonoResultado(resultado)
+        pepe.bonoPresentismo(presentismo)
+    }
+
+    test 'Cuando pepe es desarrollador y tiene bono presentismo nulo, bono resultado nulo, sin antiguedad y sin faltas' {
+        self.pepeCon(desarrollador, resultadoNulo, presentismoNulo, 0, 0)
+        assert.equals(1000, pepe.sueldo())
+    }
+
+    test 'Cuando pepe es manager y tiene bono presentismo nulo, bono resultado nulo, sin antiguedad y sin faltas' {
+        self.pepeCon(manager, resultadoNulo, presentismoNulo, 0, 0)
+        assert.equals(1500, pepe.sueldo())
+    }
+
+    test 'Cuando pepe es gerente y tiene bono presentismo nulo, bono resultado nulo, sin antiguedad y sin faltas' {
+        self.pepeCon(gerente, resultadoNulo, presentismoNulo, 0, 0)
+        assert.equals(2500, pepe.sueldo())
+    }
+
+    test 'Cuando pepe es administrativo y tiene bono presentismo nulo, bono resultado nulo, sin antiguedad y sin faltas' {
+        self.pepeCon(administrativo, resultadoNulo, presentismoNulo, 0, 0)
+        assert.equals(500, pepe.sueldo())
+    }
+
+    test 'Cuando pepe es gerente y tiene bono presentismo nulo, bono resultado nulo, con 2 años de antiguedad y sin faltas' {
+        self.pepeCon(gerente, resultadoNulo, presentismoNulo, 2, 0)
+        assert.equals(2700, pepe.sueldo())
+    }
+
+    test 'Cuando pepe es gerente y tiene bono presentismo nulo, bono resultado nulo, con 2 años de antiguedad y 1 falta' {
+        self.pepeCon(gerente, resultadoNulo, presentismoNulo, 2, 1)
+        assert.equals(2700, pepe.sueldo())
+    }
+
+    test 'Cuando pepe es gerente y tiene bono presentismo nulo, bono resultado nulo, con 2 años de antiguedad y 2 faltas' {
+        self.pepeCon(gerente, resultadoNulo, presentismoNulo, 2, 2)
+        assert.equals(2700, pepe.sueldo())
+    }
+
+}
